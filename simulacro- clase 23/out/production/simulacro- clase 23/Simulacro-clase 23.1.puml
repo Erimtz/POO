@@ -1,0 +1,35 @@
+@startuml
+
+class Instituto{
+     + generarInforme(): String
+     + agregarOfertaAcademica(): void
+}
+class FactoryOfertaAcademicas {
+     + crearCurso(nombre: String, descripcion: String, cargaHorariaMensual: int, mesesDuracion: int, valorHora: double )
+     + crearPrograma(nombre: String, descripcion: String, bonificacion: double, Set<Curso> cursos)
+}
+
+abstract OfertaAcademica {
+     - nombre: String
+     - descripcion: String
+     + {abstract} calcularPrecio(): double
+}
+class Curso {
+     - cargaHorariaMensual: int
+     - mesesDuracion: int
+     - valorHora: double
+     + {override} calcularPrecio(): double
+     + {override} toString(): String
+}
+class Programa {
+     - double
+     + {override} calcularPrecio(): double
+     + {override} toString(): String
+}
+
+Instituto -down-> "*" OfertaAcademica : - OfertaAcademicas
+Programa --> "*" Curso : - Cursos
+Programa -up-|> OfertaAcademica
+Curso -up-|> OfertaAcademica
+
+@enduml

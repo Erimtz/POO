@@ -1,0 +1,38 @@
+
+           PlantUML Policia - Parcial
+
+@startuml
+class Arma {
+- cantidadMuniciones : int
+# alcanceMetros : double
+- marca : String
+- calibre : int
+- estadoArma : String
++ condicionesDeUso() : boolean
+}
+class ArmaLarga {
+- renar : String
+- descripcionUso : String
+- nivelArma : int
++ compareTo(Object) : int
+}
+interface Funcionalidad {
+~ puedeDisparar200() : boolean
+}
+class Policia {
+- nombre : String
+- apellido : String
+- legajo : String
+}
+class ArmaCorta {
+- automatica : boolean
++ puedeDisparar200() : boolean
+}
+
+
+Policia <|-- Arma
+Comparable <|.. ArmaLarga
+Arma <|-- ArmaLarga
+Funcionalidad <|.. ArmaCorta
+Arma <|-- ArmaCorta
+@enduml

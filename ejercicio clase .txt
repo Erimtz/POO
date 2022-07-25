@@ -1,0 +1,23 @@
+class CajaDeAhorros{
+  - Saldo: float
+  + NombreTitular: String
+  - NumeroCaja: String
+  + CBU: String
+  + Alias: String
+
+  - retirarDinero(String CBU, Float Saldo, String Titular): void
+  - depositar(String CBU, Float Saldo, String Titular): void
+  - recibirDinero(String CBU, Float Saldo, String Titular): void
+  - verificarNombre(String NumeroCaja): boolean ?
+  - verificarSaldo(String NumeroCaja): boolean ?
+  - verificarNumeroCaja(String CBU): boolean ?
+  }
+
+class Cheque{
+  + FechaEmision: date 
+  + FechaVencimiento: date
+  + MontoATransferir: float
+  + TipoDeCheque: String
+  
+  + Endoso(String NuevoPropietario): void
+  }

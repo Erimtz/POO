@@ -1,0 +1,44 @@
+@startuml
+class Tren {
+- TipoModelo: List<CalculoArea>
+}
+
+class TipoModelo {
+- area: double
+- tipo: String
+- ConjuntoFigura: List<Figuras>
+}
+
+abstract class ConjuntoFigura{
++CrearConjunto(): void
++getCalcularArea(): double
+}
+
+class Circulo {
+-radio: double
++getCalcularArea(): double
+}
+class Rectangulo{
+-altura: double
+-largo: double
++getCalcularArea(): double
+}
+class Triangulo {
+-base: double
+-altura: double
++getCalcularArea(): double
+}
+
+interface CalculoArea {
++{abstract} CalcularArea(): double
+}
+
+Tren *-down- CalculoArea : - TipoModelo
+TipoModelo --|> CalculoArea
+TipoModelo *-- ConjuntoFigura : - figuras
+ConjuntoFigura -right-|> CalculoArea
+Circulo -up-|> ConjuntoFigura
+Triangulo -up-|> ConjuntoFigura
+Rectangulo -up-|> ConjuntoFigura
+
+@enduml

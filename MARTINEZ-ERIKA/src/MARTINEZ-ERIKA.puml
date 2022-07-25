@@ -1,0 +1,35 @@
+@startuml
+
+class Carga {
+     + {abstract} calcularPeso(): double
+
+}
+class CargaSimple {
+     - nombre: String
+     - pesoCarga: double
+     + {abstract} calcularPeso(): double
+}
+
+abstract Contenedor {
+     - nombre: String
+     + {abstract} calcularPesoContenedor(): double
+}
+class FactoryCargas {
+     + agregarCarga(): String;
+
+}
+
+class Barco {
+     - nombre: String
+     - pesoCarga: double
+     + {override} mostrarCarga(): double
+     + {override} toString(): String
+}
+
+Carga -down-> "*" Contenedor : - FactoryCargas
+Carga --> "*" CargaSimple : - Contenedor
+Barco -up-|> FactoryCargas
+Carga -up-|> Barco
+
+
+@enduml

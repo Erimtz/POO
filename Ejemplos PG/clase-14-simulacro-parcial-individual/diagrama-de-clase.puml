@@ -1,0 +1,54 @@
+@startuml
+skinparam classAttributeIconSize 0
+skinparam backgroundColor White
+skinparam RoundCorner 10
+skinparam Shadowing true
+
+skinparam class {
+    ArrowColor DarkBlue
+    BackgroundColor LightBlue
+    BorderColor DarkBlue
+}
+
+skinparam note {
+    BackgroundColor LightYellow
+    BorderColor DarkBlue
+}
+
+title POO-CS14 - Simulacro parcial individual
+
+abstract Embarcacion {
+    - precioBase : double
+    - valorAdicional : double
+    - anioFabricacion : int
+    - eslora : int
+    + calcularAlquiler() : double
+    + {abstract} navegar() : void
+}
+
+class Velero extends Embarcacion {
+    - cdadMastiles : int
+    + navegar() : void
+    + esGrande() : boolean
+}
+
+class Yate extends Embarcacion implements Comparable {
+    - cdadCamarotes : int
+    + navegar() : void
+    + compareTo(o : Object) : int
+}
+
+class Capitan {
+    - nombre : String
+    - apellido : String
+    - matriculaNavegacion : int
+    + Capitan(n : String, a : String, m : int)
+}
+
+interface Comparable {
+    + {abstract} compareTo(o : Object) : int
+}
+
+Embarcacion o-l Capitan
+
+@enduml
